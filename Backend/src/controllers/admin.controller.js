@@ -270,6 +270,7 @@ exports.getDashboard = asyncHandler(async (req, res) => {
   }));
 });
 
+
 // GET /api/admin/centers/:id/overview
 exports.getCenterOverview = asyncHandler(async (req, res) => {
   const centerId = req.params.id;
@@ -309,6 +310,7 @@ exports.getAllPractitioners = asyncHandler(async (req, res) => {
   const total = await Practitioner.countDocuments(filter);
   res.status(200).json(new ApiResponse(200, { practitioners, total }));
 });
+
 
 // PUT /api/admin/practitioners/:id
 exports.updatePractitioner = asyncHandler(async (req, res) => {

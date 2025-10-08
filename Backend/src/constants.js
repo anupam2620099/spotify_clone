@@ -1,1 +1,1 @@
-export const DB_NAME= "famlydb"
+export const DB_NAME = "spotify_clone"

@@ -1,17 +1,29 @@
-import mongoose from 'mongoose'
-import { DB_NAME } from '../constants.js'
+// src/db/index.js
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import { DB_NAME } from "../constants";
 
+dotenv.config();
 
-const connectDB= async ()=>{
-    try{
-        const connectionInstance= await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
-        console.log(`MongoDB connected! DB Host: ${connectionInstance.connection.host} `)
+const connectDB = async () => {
+  try {
+    console.log("Connecting to MongoDB...");
 
+    const uri = process.env.MONGODB_URI;
+    if (!uri) {
+      throw new Error("MONGODB_URI not found in .env");
     }
-    catch(error){
-        console.log("MongoDB connectionr failed: ",error);
-        process.exit(1); // hum throw error se bhi exit kara sakte the isse bhi 
-    }
-}
 
-export default connectDB
+    const connectionInstance = await mongoose.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    console.log(`✅ MongoDB Connected! Host: ${connectionInstance.connection.host}`);
+  } catch (error) {
+    console.error("❌ MongoDB connection error:", error);
+    process.exit(1);
+  }
+};
+
+export default connectDB;
