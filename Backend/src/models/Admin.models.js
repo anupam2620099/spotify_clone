@@ -31,7 +31,7 @@ const adminSchema = new mongoose.Schema({
   },
   permissions: [{
     module: String, // e.g., 'patients', 'practitioners', 'sessions'
-    actions: [String] // e.g., ['create', 'read', 'update', 'delete']
+    actions: [String] // e.g., ['read', 'update', 'delete']
   }],
   contactNumber: String,
   refreshToken: { type: String, default: null },

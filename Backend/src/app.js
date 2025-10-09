@@ -62,6 +62,14 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 const app = express()
 
+
+import practitionerRoutes from "./routes/practitioner.routes.js";
+app.use("/api/practitioners", practitionerRoutes);
+
+import patientRoutes from "./routes/patient.routes";
+app.use("/api/patients", patientRoutes);
+
+
 app.use(cors({
   origin:process.env.CORS_ORIGIN ,
   credentials:true ,

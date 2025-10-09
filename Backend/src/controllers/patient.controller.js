@@ -104,6 +104,7 @@ import Session from '../models/Session.models.js';
 import AuditLog from '../models/AuditLog.models.js';
 import Notification from '../models/Notification.models.js';
 
+
 export const getProfile = asyncHandler(async (req, res) => {
   const patient = await Patient.findById(req.user._id)
     .select('-passwordHash -refreshToken');
